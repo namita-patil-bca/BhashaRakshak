@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stories & Memories | BhashaRakshak</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .stories-page {
+            padding: 60px 8%;
+            background: #f7f8fc;
+            min-height: 80vh;
+        }
+
+        .stories-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 45px;
+        }
+
+        .stories-header span {
+            color: #14a994;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 14px;
+        }
+
+        .stories-header h1 {
+            color: #20233a;
+            font-size: 42px;
+            margin: 12px 0;
+        }
+
+        .stories-header p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .story-card {
+            background: white;
+            padding: 28px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+            transition: 0.3s;
+        }
+
+        .story-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .story-icon {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .story-card h3 {
+            color: #20233a;
+            margin-bottom: 10px;
+        }
+
+        .story-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .story-meta {
+            margin-top: 18px;
+            color: #14a994;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .share-story {
+            max-width: 850px;
+            margin: 50px auto 0;
+            padding: 35px;
+            text-align: center;
+            background: #5146c7;
+            color: white;
+            border-radius: 22px;
+        }
+
+        .share-story h2 {
+            margin-bottom: 10px;
+        }
+
+        .share-story p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .story-btn {
+            display: inline-block;
+            background: white;
+            color: #5146c7;
+            padding: 12px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        @media (max-width: 850px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stories-header h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">🌱 BhashaRakshak</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="map.html">Dialect Map</a>
+        <a href="dictionary.html">Dictionary</a>
+        <a href="voice.html">Voice Archive</a>
+        <a href="stories.html">Stories</a>
+        <a href="learn.html">Learn</a>
+        <a href="dashboard.html">Dashboard</a>
+    </nav>
+
+</header>
+
+
+<main class="stories-page">
+
+    <section class="stories-header">
+
+        <span>CULTURE • MEMORY • HERITAGE</span>
+
+        <h1>Stories & Memories</h1>
+
+        <p>
+            Every dialect carries stories, traditions, expressions and
+            memories passed from one generation to another.
+            BhashaRakshak helps preserve these cultural treasures.
+        </p>
+
+    </section>
+
+
+    <section class="story-grid">
+
+        <div class="story-card">
+
+            <div class="story-icon">👵</div>
+
+            <h3>Voices of Elders</h3>
+
+            <p>
+                Preserve traditional words, expressions and memories
+                shared by older generations in their natural dialect.
+            </p>
+
+            <div class="story-meta">
+                🎙️ Oral Heritage
+            </div>
+
+        </div>
+
+
+        <div class="story-card">
+
+            <div class="story-icon">📖</div>
+
+            <h3>Traditional Stories</h3>
+
+            <p>
+                Record folk stories, village memories and traditional
+                narratives before they disappear from everyday use.
+            </p>
+
+            <div class="story-meta">
+                📜 Cultural Stories
+            </div>
+
+        </div>
+
+
+        <div class="story-card">
+
+            <div class="story-icon">🌾</div>
+
+            <h3>Local Traditions</h3>
+
+            <p>
+                Discover words and expressions connected with festivals,
+                farming, food, customs and local traditions.
+            </p>
+
+            <div class="story-meta">
+                🪔 Cultural Knowledge
+            </div>
+
+        </div>
+
+
+        <div class="story-card">
+
+            <div class="story-icon">💬</div>
+
+            <h3>Unique Expressions</h3>
+
+            <p>
+                Preserve special phrases, sayings and expressions that
+                make every local dialect unique.
+            </p>
+
+            <div class="story-meta">
+                🗣️ Local Expressions
+            </div>
+
+        </div>
+
+
+        <div class="story-card">
+
+            <div class="story-icon">🏡</div>
+
+            <h3>Village Memories</h3>
+
+            <p>
+                Share memories about places, people and everyday life
+                connected with local communities.
+            </p>
+
+            <div class="story-meta">
+                🌱 Community Memory
+            </div>
+
+        </div>
+
+
+        <div class="story-card">
+
+            <div class="story-icon">❤️</div>
+
+            <h3>Language & Identity</h3>
+
+            <p>
+                A language is more than words. It carries identity,
+                emotions, history and a sense of belonging.
+            </p>
+
+            <div class="story-meta">
+                🌍 Living Heritage
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="share-story">
+
+        <h2>Have a Story to Preserve?</h2>
+
+        <p>
+            Share a traditional story, local expression or cultural memory
+            and help keep your language alive for future generations.
+        </p>
+
+        <a href="voice.html" class="story-btn">
+            🎙️ Share Your Voice
+        </a>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-logo">🌱 BhashaRakshak</div>
+
+    <p>Preserving languages. Preserving identities.</p>
+
+    <p class="copyright">
+        © 2026 BhashaRakshak | Language Preservation Project
+    </p>
+
+</footer>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>

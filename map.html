@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dialect Map | BhashaRakshak</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .map-page {
+            padding: 70px 8%;
+            min-height: 75vh;
+        }
+
+        .map-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 45px;
+        }
+
+        .map-header span {
+            color: #14a994;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .map-header h1 {
+            font-size: 48px;
+            margin: 12px 0;
+        }
+
+        .map-header p {
+            color: #717386;
+            font-size: 17px;
+        }
+
+        .map-layout {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            align-items: stretch;
+        }
+
+        .map-box {
+            min-height: 500px;
+
+            background: white;
+
+            border: 1px solid #eeeeF5;
+            border-radius: 22px;
+
+            padding: 35px;
+
+            box-shadow: 0 10px 30px rgba(50, 50, 90, 0.07);
+        }
+
+        .map-box h2 {
+            margin-bottom: 25px;
+        }
+
+        /* Simple visual map */
+
+        .india-map {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 390px;
+
+            margin: auto;
+
+            background: #f0efff;
+
+            clip-path: polygon(
+                45% 0%,
+                61% 8%,
+                70% 20%,
+                77% 30%,
+                72% 42%,
+                80% 53%,
+                70% 62%,
+                75% 76%,
+                62% 92%,
+                52% 100%,
+                44% 86%,
+                37% 73%,
+                30% 63%,
+                24% 52%,
+                30% 40%,
+                25% 28%,
+                34% 18%,
+                36% 7%
+            );
+        }
+
+        .region {
+            position: absolute;
+
+            padding: 10px 15px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: #5146c7;
+            color: white;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow: 0 5px 15px rgba(50, 50, 90, 0.15);
+
+            transition: 0.3s;
+        }
+
+        .region:hover {
+            transform: scale(1.08);
+            background: #4036a8;
+        }
+
+        .maharashtra {
+            left: 27%;
+            top: 48%;
+        }
+
+        .gujarat {
+            left: 25%;
+            top: 30%;
+        }
+
+        .madhya {
+            left: 48%;
+            top: 27%;
+        }
+
+        .karnataka {
+            left: 37%;
+            top: 68%;
+        }
+
+        .region-info {
+            padding: 30px;
+
+            background: #fafaff;
+
+            border-radius: 18px;
+
+            border: 1px solid #eeeeF5;
+        }
+
+        .region-info .emoji {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .region-info h2 {
+            color: #5146c7;
+            margin-bottom: 10px;
+        }
+
+        .region-info p {
+            color: #717386;
+            margin-bottom: 15px;
+        }
+
+        .info-item {
+            padding: 12px;
+
+            background: white;
+
+            border-radius: 10px;
+
+            margin-top: 10px;
+
+            border: 1px solid #eeeeF5;
+        }
+
+        .info-item strong {
+            display: block;
+            color: #44475a;
+        }
+
+        .info-item span {
+            color: #717386;
+            font-size: 14px;
+        }
+
+        .map-note {
+            margin-top: 25px;
+
+            padding: 15px;
+
+            background: #e2f8f4;
+
+            color: #177c70;
+
+            border-radius: 12px;
+
+            font-size: 13px;
+        }
+
+        @media (max-width: 850px) {
+
+            .map-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .map-header h1 {
+                font-size: 38px;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            .map-page {
+                padding: 50px 5%;
+            }
+
+            .map-box {
+                padding: 22px;
+            }
+
+            .india-map {
+                height: 320px;
+            }
+
+            .region {
+                padding: 7px 10px;
+                font-size: 12px;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Navigation -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🌱 BhashaRakshak
+        </div>
+
+        <nav>
+
+            <a href="index.html">Home</a>
+
+            <a href="map.html">Dialect Map</a>
+
+            <a href="dictionary.html">Dictionary</a>
+
+            <a href="voice.html">Voice Archive</a>
+
+            <a href="stories.html">Stories</a>
+
+            <a href="learn.html">Learn</a>
+
+            <a href="dashboard.html">Dashboard</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- Main -->
+
+    <main class="map-page">
+
+
+        <section class="map-header">
+
+            <span>DIALECT MAP</span>
+
+            <h1>
+                Explore Languages by Region
+            </h1>
+
+            <p>
+                Select a region to discover its local language
+                and dialect information.
+            </p>
+
+        </section>
+
+
+        <div class="map-layout">
+
+
+            <!-- Map -->
+
+            <div class="map-box">
+
+                <h2>🗺️ Regional Explorer</h2>
+
+                <div class="india-map">
+
+                    <button
+                        class="region gujarat"
+                        onclick="showRegion('Gujarat')">
+                        Gujarat
+                    </button>
+
+                    <button
+                        class="region madhya"
+                        onclick="showRegion('Madhya Pradesh')">
+                        M.P.
+                    </button>
+
+                    <button
+                        class="region maharashtra"
+                        onclick="showRegion('Maharashtra')">
+                        Maharashtra
+                    </button>
+
+                    <button
+                        class="region karnataka"
+                        onclick="showRegion('Karnataka')">
+                        Karnataka
+                    </button>
+
+                </div>
+
+                <div class="map-note">
+                    💡 Click a region to explore its language
+                    information.
+                </div>
+
+            </div>
+
+
+            <!-- Information -->
+
+            <div class="map-box">
+
+                <h2>📍 Region Information</h2>
+
+                <div
+                    class="region-info"
+                    id="regionInfo">
+
+                    <div class="emoji">
+                        🌍
+                    </div>
+
+                    <h2>
+                        Select a Region
+                    </h2>
+
+                    <p>
+                        Click any region on the map to
+                        view information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="footer-logo">
+            🌱 BhashaRakshak
+        </div>
+
+        <p>
+            Preserving languages. Preserving identities.
+        </p>
+
+        <p class="copyright">
+            © 2026 BhashaRakshak | Language Preservation Project
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        function showRegion(region) {
+
+            const info =
+                document.getElementById("regionInfo");
+
+
+            const regions = {
+
+                "Maharashtra": {
+
+                    emoji: "🌾",
+
+                    title: "Maharashtra",
+
+                    description:
+                        "A region with diverse Marathi varieties and several regional speech traditions.",
+
+                    language:
+                        "Marathi and regional varieties",
+
+                    examples:
+                        "Khandeshi, Varhadi and other regional varieties"
+
+                },
+
+
+                "Gujarat": {
+
+                    emoji: "🪔",
+
+                    title: "Gujarat",
+
+                    description:
+                        "A linguistically diverse region with Gujarati and several regional varieties.",
+
+                    language:
+                        "Gujarati and regional varieties",
+
+                    examples:
+                        "Regional Gujarati varieties"
+
+                },
+
+
+                "Madhya Pradesh": {
+
+                    emoji: "🌳",
+
+                    title: "Madhya Pradesh",
+
+                    description:
+                        "A central Indian region with several languages and speech varieties.",
+
+                    language:
+                        "Hindi and regional languages",
+
+                    examples:
+                        "Malvi, Nimadi and other varieties"
+
+                },
+
+
+                "Karnataka": {
+
+                    emoji: "🌿",
+
+                    title: "Karnataka",
+
+                    description:
+                        "A multilingual region where Kannada and several other languages are spoken.",
+
+                    language:
+                        "Kannada and regional languages",
+
+                    examples:
+                        "Regional Kannada varieties"
+
+                }
+
+            };
+
+
+            const selected = regions[region];
+
+
+            info.innerHTML = `
+
+                <div class="emoji">
+                    ${selected.emoji}
+                </div>
+
+                <h2>
+                    ${selected.title}
+                </h2>
+
+                <p>
+                    ${selected.description}
+                </p>
+
+                <div class="info-item">
+
+                    <strong>
+                        Language
+                    </strong>
+
+                    <span>
+                        ${selected.language}
+                    </span>
+
+                </div>
+
+                <div class="info-item">
+
+                    <strong>
+                        Examples
+                    </strong>
+
+                    <span>
+                        ${selected.examples}
+                    </span>
+
+                </div>
+
+            `;
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

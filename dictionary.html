@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Living Dictionary | BhashaRakshak</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .dictionary-page {
+            padding: 70px 8%;
+            min-height: 75vh;
+        }
+
+        .dictionary-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 45px;
+        }
+
+        .dictionary-header span {
+            color: #14a994;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .dictionary-header h1 {
+            font-size: 48px;
+            margin: 12px 0;
+        }
+
+        .dictionary-header p {
+            color: #717386;
+            font-size: 17px;
+        }
+
+        .search-box {
+            max-width: 700px;
+            margin: 0 auto 45px;
+
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 15px 18px;
+
+            border: 1px solid #ddddec;
+            border-radius: 12px;
+
+            font-size: 15px;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: #5146c7;
+        }
+
+        .search-box button {
+            padding: 15px 22px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: #5146c7;
+            color: white;
+
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .dictionary-grid {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .word-card {
+            background: white;
+
+            border: 1px solid #eeeeF5;
+            border-radius: 18px;
+
+            padding: 28px;
+
+            box-shadow: 0 8px 25px rgba(50, 50, 90, 0.06);
+
+            transition: 0.3s;
+        }
+
+        .word-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .word-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .local-word {
+            font-size: 28px;
+            color: #5146c7;
+            font-weight: 800;
+        }
+
+        .listen-btn {
+            width: 42px;
+            height: 42px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: #ebe9ff;
+            color: #5146c7;
+
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .word-card h4 {
+            margin-top: 20px;
+            color: #44475a;
+        }
+
+        .word-card p {
+            color: #717386;
+            margin-top: 5px;
+        }
+
+        .dialect-tag {
+            display: inline-block;
+
+            margin-top: 18px;
+            padding: 5px 10px;
+
+            background: #e2f8f4;
+            color: #128d7c;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .no-result {
+            text-align: center;
+            color: #717386;
+
+            grid-column: 1 / -1;
+
+            padding: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .dictionary-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .dictionary-header h1 {
+                font-size: 36px;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .dictionary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🌱 BhashaRakshak
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="map.html">Dialect Map</a>
+            <a href="dictionary.html">Dictionary</a>
+            <a href="voice.html">Voice Archive</a>
+            <a href="stories.html">Stories</a>
+            <a href="learn.html">Learn</a>
+            <a href="dashboard.html">Dashboard</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Dictionary -->
+
+    <main class="dictionary-page">
+
+        <section class="dictionary-header">
+
+            <span>LIVING DICTIONARY</span>
+
+            <h1>
+                Discover Local Words
+            </h1>
+
+            <p>
+                Explore local words, meanings and cultural
+                expressions from different dialects.
+            </p>
+
+        </section>
+
+
+        <!-- Search -->
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="wordSearch"
+                placeholder="Search a local word..."
+            >
+
+            <button onclick="searchWords()">
+                Search
+            </button>
+
+        </div>
+
+
+        <!-- Word Cards -->
+
+        <div class="dictionary-grid" id="dictionaryGrid">
+
+
+            <!-- Word 1 -->
+
+            <div class="word-card" data-word="माय">
+
+                <div class="word-top">
+
+                    <div class="local-word">
+                        माय
+                    </div>
+
+                    <button
+                        class="listen-btn"
+                        onclick="speakWord('माय')"
+                    >
+                        🔊
+                    </button>
+
+                </div>
+
+                <h4>Meaning in Marathi</h4>
+
+                <p>आई</p>
+
+                <h4>Meaning in English</h4>
+
+                <p>Mother</p>
+
+                <span class="dialect-tag">
+                    Khandeshi
+                </span>
+
+            </div>
+
+
+            <!-- Word 2 -->
+
+            <div class="word-card" data-word="भाकर">
+
+                <div class="word-top">
+
+                    <div class="local-word">
+                        भाकर
+                    </div>
+
+                    <button
+                        class="listen-btn"
+                        onclick="speakWord('भाकर')"
+                    >
+                        🔊
+                    </button>
+
+                </div>
+
+                <h4>Meaning in Marathi</h4>
+
+                <p>भाकरी</p>
+
+                <h4>Meaning in English</h4>
+
+                <p>Flatbread</p>
+
+                <span class="dialect-tag">
+                    Khandeshi
+                </span>
+
+            </div>
+
+
+            <!-- Word 3 -->
+
+            <div class="word-card" data-word="न्हाय">
+
+                <div class="word-top">
+
+                    <div class="local-word">
+                        न्हाय
+                    </div>
+
+                    <button
+                        class="listen-btn"
+                        onclick="speakWord('न्हाय')"
+                    >
+                        🔊
+                    </button>
+
+                </div>
+
+                <h4>Meaning in Marathi</h4>
+
+                <p>नाही</p>
+
+                <h4>Meaning in English</h4>
+
+                <p>No / Not</p>
+
+                <span class="dialect-tag">
+                    Local Dialect
+                </span>
+
+            </div>
+
+
+            <!-- Word 4 -->
+
+            <div class="word-card" data-word="व्हय">
+
+                <div class="word-top">
+
+                    <div class="local-word">
+                        व्हय
+                    </div>
+
+                    <button
+                        class="listen-btn"
+                        onclick="speakWord('व्हय')"
+                    >
+                        🔊
+                    </button>
+
+                </div>
+
+                <h4>Meaning in Marathi</h4>
+
+                <p>होय</p>
+
+                <h4>Meaning in English</h4>
+
+                <p>Yes</p>
+
+                <span class="dialect-tag">
+                    Local Dialect
+                </span>
+
+            </div>
+
+
+            <!-- Word 5 -->
+
+            <div class="word-card" data-word="तठं">
+
+                <div class="word-top">
+
+                    <div class="local-word">
+                        तठं
+                    </div>
+
+                    <button
+                        class="listen-btn"
+                        onclick="speakWord('तठं')"
+                    >
+                        🔊
+                    </button>
+
+                </div>
+
+                <h4>Meaning in Marathi</h4>
+
+                <p>तिथे</p>
+
+                <h4>Meaning in English</h4>
+
+                <p>There</p>
+
+                <span class="dialect-tag">
+                    Local Dialect
+                </span>
+
+            </div>
+
+
+            <!-- Word 6 -->
+
+            <div class="word-card" data-word="कुटं">
+
+                <div class="word-top">
+
+                    <div class="local-word">
+                        कुटं
+                    </div>
+
+                    <button
+                        class="listen-btn"
+                        onclick="speakWord('कुटं')"
+                    >
+                        🔊
+                    </button>
+
+                </div>
+
+                <h4>Meaning in Marathi</h4>
+
+                <p>कुठे</p>
+
+                <h4>Meaning in English</h4>
+
+                <p>Where</p>
+
+                <span class="dialect-tag">
+                    Local Dialect
+                </span>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="footer-logo">
+            🌱 BhashaRakshak
+        </div>
+
+        <p>
+            Preserving languages. Preserving identities.
+        </p>
+
+        <p class="copyright">
+            © 2026 BhashaRakshak | Language Preservation Project
+        </p>
+
+    </footer>
+
+
+    <script src="js/app.js"></script>
+
+    <script>
+
+        // Search dictionary
+        async function loadDictionaryFromBackend() {
+    try {
+        const response = await fetch("http://127.0.0.1:5000/api/dictionary");
+
+        if (!response.ok) {
+            throw new Error("Unable to load dictionary data");
+        }
+
+        const words = await response.json();
+
+        const grid = document.getElementById("dictionaryGrid");
+
+        grid.innerHTML = "";
+
+        words.forEach(item => {
+            const card = document.createElement("div");
+
+            card.className = "word-card";
+
+            card.innerHTML = `
+                <h3>${item.word}</h3>
+                <p><strong>मराठी:</strong> ${item.meaning_marathi}</p>
+                <p><strong>English:</strong> ${item.meaning_english}</p>
+                <small>${item.dialect}</small>
+                <br><br>
+                <button onclick="speakWord('${item.word}')">
+                    🔊 Listen
+                </button>
+            `;
+
+            grid.appendChild(card);
+        });
+
+    } catch (error) {
+        console.error("Dictionary API Error:", error);
+    }
+}
+
+loadDictionaryFromBackend();
+
+        function searchWords() {
+
+            const search =
+                document
+                .getElementById("wordSearch")
+                .value
+                .toLowerCase()
+                .trim();
+
+            const cards =
+                document.querySelectorAll(".word-card");
+
+            let found = false;
+
+            cards.forEach(function(card) {
+
+                const word =
+                    card
+                    .getAttribute("data-word")
+                    .toLowerCase();
+
+                if (word.includes(search)) {
+
+                    card.style.display = "block";
+
+                    found = true;
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+            if (!found && search !== "") {
+
+                alert("Word not found in the dictionary.");
+
+            }
+
+        }
+
+
+        // Voice pronunciation
+
+        function speakWord(word) {
+
+            if ("speechSynthesis" in window) {
+
+                const speech =
+                    new SpeechSynthesisUtterance(word);
+
+                speech.lang = "mr-IN";
+
+                speech.rate = 0.8;
+
+                window.speechSynthesis.speak(speech);
+
+            } else {
+
+                alert(
+                    "Speech synthesis is not supported in this browser."
+                );
+
+            }
+
+        }
+
+
+        // Search using Enter key
+
+        document
+        .getElementById("wordSearch")
+        .addEventListener("keypress", function(event) {
+
+            if (event.key === "Enter") {
+
+                searchWords();
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

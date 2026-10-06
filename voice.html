@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Voice Archive | BhashaRakshak</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        .voice-page {
+            padding: 70px 8%;
+            min-height: 75vh;
+        }
+
+        .voice-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 45px;
+        }
+
+        .voice-header span {
+            color: #14a994;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .voice-header h1 {
+            font-size: 48px;
+            margin: 12px 0;
+        }
+
+        .voice-header p {
+            color: #717386;
+            font-size: 17px;
+        }
+
+        .voice-container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .recorder-card {
+            background: white;
+            padding: 40px;
+
+            border-radius: 22px;
+
+            border: 1px solid #eeeeF5;
+
+            box-shadow: 0 12px 35px rgba(50, 50, 90, 0.08);
+
+            text-align: center;
+        }
+
+        .mic-circle {
+            width: 110px;
+            height: 110px;
+
+            margin: 0 auto 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #ebe9ff;
+
+            border-radius: 50%;
+
+            font-size: 50px;
+        }
+
+        .recorder-card h2 {
+            margin-bottom: 10px;
+        }
+
+        .recorder-card > p {
+            color: #717386;
+            margin-bottom: 30px;
+        }
+
+        .record-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .record-btn {
+            padding: 14px 25px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: #5146c7;
+            color: white;
+
+            font-size: 15px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .record-btn:hover {
+            background: #4036a8;
+        }
+
+        .stop-btn {
+            background: #55586d;
+        }
+
+        .stop-btn:hover {
+            background: #3d3f50;
+        }
+
+        .status {
+            margin-top: 25px;
+
+            padding: 12px;
+
+            border-radius: 10px;
+
+            background: #f5f5fa;
+
+            color: #626477;
+
+            font-size: 14px;
+        }
+
+        .recording {
+            background: #fff0f0;
+            color: #c0392b;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 25px;
+        }
+
+        .archive-info {
+            margin-top: 35px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 15px;
+        }
+
+        .archive-item {
+            padding: 20px;
+
+            background: #fafaff;
+
+            border-radius: 15px;
+
+            text-align: center;
+
+            border: 1px solid #eeeeF5;
+        }
+
+        .archive-item strong {
+            display: block;
+
+            color: #5146c7;
+
+            font-size: 25px;
+        }
+
+        .archive-item span {
+            color: #717386;
+
+            font-size: 13px;
+        }
+
+        .privacy-note {
+            margin-top: 25px;
+
+            padding: 15px;
+
+            background: #e2f8f4;
+
+            color: #177c70;
+
+            border-radius: 12px;
+
+            font-size: 13px;
+        }
+
+        @media (max-width: 650px) {
+
+            .voice-page {
+                padding: 50px 5%;
+            }
+
+            .voice-header h1 {
+                font-size: 36px;
+            }
+
+            .recorder-card {
+                padding: 25px;
+            }
+
+            .archive-info {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Navigation -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            🌱 BhashaRakshak
+        </div>
+
+        <nav>
+
+            <a href="index.html">Home</a>
+
+            <a href="map.html">Dialect Map</a>
+
+            <a href="dictionary.html">Dictionary</a>
+
+            <a href="voice.html">Voice Archive</a>
+
+            <a href="stories.html">Stories</a>
+
+            <a href="learn.html">Learn</a>
+
+            <a href="dashboard.html">Dashboard</a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- Voice Archive -->
+
+    <main class="voice-page">
+
+
+        <section class="voice-header">
+
+            <span>VOICE ARCHIVE</span>
+
+            <h1>
+                Preserve the Voice of a Language
+            </h1>
+
+            <p>
+                Record a local word, sentence or short story
+                and help create a digital language archive.
+            </p>
+
+        </section>
+
+
+        <div class="voice-container">
+
+
+            <div class="recorder-card">
+
+
+                <div class="mic-circle">
+                    🎙️
+                </div>
+
+
+                <h2>
+                    Record Your Voice
+                </h2>
+
+
+                <p>
+                    Speak naturally in your local language
+                    or dialect.
+                </p>
+
+
+                <div class="record-controls">
+
+                    <button
+                        class="record-btn"
+                        id="startBtn"
+                        onclick="startRecording()">
+
+                        🔴 Start Recording
+
+                    </button>
+
+
+                    <button
+                        class="record-btn stop-btn"
+                        id="stopBtn"
+                        onclick="stopRecording()"
+                        disabled>
+
+                        ⏹️ Stop Recording
+
+                    </button>
+                    <div style="margin-top: 25px; text-align: center;">
+    <p><strong>🎧 Your Recording</strong></p>
+
+    <audio id="audioPlayer" controls style="width: 100%; max-width: 500px;">
+        Your browser does not support audio playback.
+    </audio>
+</div>
+
+                </div>
+
+
+                <div
+                    class="status"
+                    id="recordStatus">
+
+                    Ready to record
+
+                </div>
+
+
+                <audio
+                    id="audioPlayer"
+                    controls
+                    style="display:none;">
+                </audio>
+
+
+            </div>
+
+
+            <!-- Information -->
+
+            <div class="archive-info">
+
+
+                <div class="archive-item">
+
+                    <strong>
+                        🎙️
+                    </strong>
+
+                    <span>
+                        Voice Contributions
+                    </span>
+
+                </div>
+
+
+                <div class="archive-item">
+
+                    <strong>
+                        🌍
+                    </strong>
+
+                    <span>
+                        Local Languages
+                    </span>
+
+                </div>
+
+
+                <div class="archive-item">
+
+                    <strong>
+                        📚
+                    </strong>
+
+                    <span>
+                        Cultural Memories
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="privacy-note">
+
+                🔒 <strong>Prototype Note:</strong>
+                In this prototype, recordings remain available
+                only during the current browser session.
+                A future backend will securely store approved
+                contributions.
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="footer-logo">
+            🌱 BhashaRakshak
+        </div>
+
+        <p>
+            Preserving languages. Preserving identities.
+        </p>
+
+        <p class="copyright">
+            © 2026 BhashaRakshak | Language Preservation Project
+        </p>
+
+    </footer>
+
+
+   <script>
+
+let mediaRecorder;
+let audioChunks = [];
+
+const startBtn = document.getElementById("startBtn");
+const stopBtn = document.getElementById("stopBtn");
+const statusText = document.getElementById("statusText");
+const audioPlayer = document.getElementById("audioPlayer");
+
+async function startRecording() {
+
+    try {
+
+        const stream = await navigator.mediaDevices.getUserMedia({
+            audio: true
+        });
+
+        audioChunks = [];
+
+        mediaRecorder = new MediaRecorder(stream);
+
+        mediaRecorder.ondataavailable = function(event) {
+
+            if (event.data.size > 0) {
+                audioChunks.push(event.data);
+            }
+
+        };
+
+        mediaRecorder.onstop = function() {
+
+            const audioBlob = new Blob(audioChunks, {
+                type: mediaRecorder.mimeType || "audio/webm"
+            });
+
+            console.log("Audio chunks:", audioChunks.length);
+            console.log("Recording MIME type:", audioBlob.type);
+            console.log("Audio size:", audioBlob.size);
+
+            const audioURL = URL.createObjectURL(audioBlob);
+
+            audioPlayer.src = audioURL;
+            audioPlayer.controls = true;
+
+            audioPlayer.load();
+
+            statusText.textContent = "Recording ready. Press Play ▶️";
+
+            // Stop microphone
+            stream.getTracks().forEach(track => track.stop());
+
+            // Upload recording to Flask
+            uploadVoice(audioBlob);
+        };
+
+        mediaRecorder.start();
+
+        startBtn.disabled = true;
+        stopBtn.disabled = false;
+
+        statusText.textContent = "🔴 Recording... Speak now.";
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Microphone access is required.");
+
+    }
+}
+
+
+function stopRecording() {
+
+    if (mediaRecorder && mediaRecorder.state !== "inactive") {
+
+        mediaRecorder.stop();
+
+        startBtn.disabled = false;
+        stopBtn.disabled = true;
+
+    }
+
+}
+
+
+async function uploadVoice(audioBlob) {
+
+    const formData = new FormData();
+
+    formData.append(
+        "voice",
+        audioBlob,
+        "voice_" + Date.now() + ".webm"
+    );
+
+    try {
+
+        const response = await fetch(
+            "http://127.0.0.1:5000/api/upload-voice",
+            {
+                method: "POST",
+                body: formData
+            }
+        );
+
+        const result = await response.json();
+
+        console.log("Upload result:", result);
+
+    } catch (error) {
+
+        console.error("Upload error:", error);
+
+    }
+
+}
+
+</script>
+</body>
+
+</html>

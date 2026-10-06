@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Learn & Play | BhashaRakshak</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .learn-page {
+            padding: 60px 8%;
+            background: #f7f8fc;
+            min-height: 80vh;
+        }
+
+        .learn-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 45px;
+        }
+
+        .learn-header span {
+            color: #14a994;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 14px;
+        }
+
+        .learn-header h1 {
+            color: #20233a;
+            font-size: 42px;
+            margin: 12px 0;
+        }
+
+        .learn-header p {
+            color: #666;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .learning-grid {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .learning-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+            transition: 0.3s;
+        }
+
+        .learning-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .learning-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .learning-card h3 {
+            color: #20233a;
+            margin-bottom: 10px;
+        }
+
+        .learning-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .learn-btn {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 10px 20px;
+            background: #5146c7;
+            color: white;
+            text-decoration: none;
+            border-radius: 9px;
+            font-weight: 600;
+        }
+
+        .flashcard-section {
+            max-width: 700px;
+            margin: 55px auto 0;
+            text-align: center;
+        }
+
+        .flashcard-section h2 {
+            color: #20233a;
+            margin-bottom: 20px;
+        }
+
+        .flashcard {
+            background: white;
+            border-radius: 22px;
+            padding: 40px 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .flashcard small {
+            color: #14a994;
+            font-weight: 700;
+        }
+
+        .flashcard h2 {
+            font-size: 38px;
+            margin: 15px 0 8px;
+        }
+
+        .flashcard p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .answer {
+            display: none;
+            background: #eefaf7;
+            padding: 15px;
+            border-radius: 10px;
+            color: #20233a;
+            margin-top: 15px;
+        }
+
+        .flash-btn {
+            border: none;
+            background: #14a994;
+            color: white;
+            padding: 11px 22px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        @media (max-width: 850px) {
+            .learning-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .learn-header h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">🌱 BhashaRakshak</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="map.html">Dialect Map</a>
+        <a href="dictionary.html">Dictionary</a>
+        <a href="voice.html">Voice Archive</a>
+        <a href="stories.html">Stories</a>
+        <a href="learn.html">Learn</a>
+        <a href="dashboard.html">Dashboard</a>
+    </nav>
+
+</header>
+
+
+<main class="learn-page">
+
+    <section class="learn-header">
+
+        <span>LEARN • PLAY • PRESERVE</span>
+
+        <h1>Learn Your Dialect</h1>
+
+        <p>
+            Learning a local language can make its vocabulary and
+            cultural identity stronger. Explore words, practice
+            meanings and test your knowledge.
+        </p>
+
+    </section>
+
+
+    <section class="learning-grid">
+
+        <div class="learning-card">
+
+            <div class="learning-icon">🃏</div>
+
+            <h3>Flashcards</h3>
+
+            <p>
+                Learn local words and their meanings using
+                simple interactive flashcards.
+            </p>
+
+            <a href="#flashcards" class="learn-btn">
+                Start Flashcards
+            </a>
+
+        </div>
+
+
+        <div class="learning-card">
+
+            <div class="learning-icon">🧠</div>
+
+            <h3>Vocabulary Practice</h3>
+
+            <p>
+                Improve your vocabulary by discovering
+                new local words and expressions.
+            </p>
+
+            <a href="dictionary.html" class="learn-btn">
+                Practice Words
+            </a>
+
+        </div>
+
+
+        <div class="learning-card">
+
+            <div class="learning-icon">🎯</div>
+
+            <h3>Dialect Quiz</h3>
+
+            <p>
+                Test your knowledge of local words,
+                meanings and cultural expressions.
+            </p>
+
+            <a href="#quiz" class="learn-btn">
+                Take Quiz
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <section class="flashcard-section" id="flashcards">
+
+        <h2>Try a Flashcard</h2>
+
+        <div class="flashcard">
+
+            <small>KHANDESHI • LOCAL WORD</small>
+
+            <h2>भाकर</h2>
+
+            <p>Do you know its meaning?</p>
+
+            <button class="flash-btn" onclick="showAnswer()">
+                Show Meaning
+            </button>
+
+            <div class="answer" id="answer">
+                <strong>Meaning:</strong> भाकरी / Flatbread
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="flashcard-section" id="quiz">
+
+        <h2>Quick Quiz 🎯</h2>
+
+        <div class="flashcard">
+
+            <small>QUESTION</small>
+
+            <h3>Which meaning is closest to "माय"?</h3>
+
+            <button class="flash-btn" onclick="checkAnswer(false)">
+                Sister
+            </button>
+
+            <button class="flash-btn" onclick="checkAnswer(true)">
+                Mother
+            </button>
+
+            <button class="flash-btn" onclick="checkAnswer(false)">
+                Friend
+            </button>
+
+            <div class="answer" id="quizAnswer"></div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-logo">🌱 BhashaRakshak</div>
+
+    <p>Preserving languages. Preserving identities.</p>
+
+    <p class="copyright">
+        © 2026 BhashaRakshak | Language Preservation Project
+    </p>
+
+</footer>
+
+
+<script src="js/app.js"></script>
+
+<script>
+
+function showAnswer() {
+
+    const answer = document.getElementById("answer");
+
+    answer.style.display = "block";
+}
+
+
+function checkAnswer(correct) {
+
+    const result = document.getElementById("quizAnswer");
+
+    result.style.display = "block";
+
+    if (correct) {
+
+        result.innerHTML = "✅ Correct! Great job.";
+
+    } else {
+
+        result.innerHTML = "❌ Try again!";
+
+    }
+}
+
+</script>
+
+</body>
+</html>
